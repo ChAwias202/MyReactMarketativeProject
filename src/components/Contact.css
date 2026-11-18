@@ -1,0 +1,223 @@
+.contact {
+  --accent: #22dbe3;
+}
+
+.contact {
+  padding: 110px 5%;
+  background: radial-gradient(circle at 50% 40%, #2a2a2a 0%, #101010 70%);
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  scroll-margin-top: 90px;
+}
+
+.contact__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Left: details ---------- */
+.contact__info {
+  text-align: center;
+}
+
+.contact__title {
+  margin: 0 0 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: 0.02em;
+}
+
+.contact__desc {
+  max-width: 340px;
+  margin: 0 auto 28px;
+  color: #d0d0d0;
+  line-height: 1.7;
+}
+
+.contact__label {
+  margin: 22px 0 4px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.contact__text {
+  margin: 0;
+  color: #d0d0d0;
+}
+
+.contact__text a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact__text a:hover {
+  color: var(--accent);
+}
+
+.contact__social {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact__social a {
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: #d0d0d0;
+  transition: color 0.2s ease;
+}
+
+.contact__social a:hover {
+  color: var(--accent);
+}
+
+.contact__social svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* ---------- Right: form card ---------- */
+.contact__card {
+  display: flex;
+  flex-direction: column;
+  padding: 48px 56px;
+  background: #262626;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.contact__card .contact__title {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.contact__card input,
+.contact__card textarea {
+  width: 100%;
+  margin-bottom: 26px;
+  padding: 8px 2px;
+  border: 0;
+  border-bottom: 2px solid #bdbdbd;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.05rem;
+  resize: none;
+  transition: border-color 0.2s ease;
+}
+
+.contact__card input::placeholder,
+.contact__card textarea::placeholder {
+  color: #cfcfcf;
+}
+
+.contact__card input:focus,
+.contact__card textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.contact__card button {
+  align-self: center;
+  margin-top: 10px;
+  padding: 14px 44px;
+  border: 0;
+  background: #454545;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact__card button:hover:not(:disabled) {
+  background: #5a5a5a;
+  transform: translateY(-2px);
+}
+
+.contact__card button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.contact__card button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.contact__status {
+  min-height: 1.5em;
+  margin: 18px 0 0;
+  text-align: center;
+  color: var(--accent);
+}
+
+/* Hidden labels (still read by screen readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 👈 New styles for the location side-by-side layout */
+.contact__location-row {
+  display: grid;
+  grid-template-columns: 60px 1fr; /* 60px for "Loc1", rest for the address */
+  gap: 16px;
+  margin-bottom: 12px;
+  align-items: start;
+}
+
+.contact__loc-name {
+  color: #ffffff; /* Keeps it bright white so it stands out */
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding-top: 2px; /* Aligns it nicely with the address text */
+}
+
+.contact__location-row .contact__text {
+  margin: 0; /* Removes default paragraph margin inside the grid */
+}
+
+
+/* ---------- Mobile ---------- */
+@media (max-width: 900px) {
+  .contact {
+    padding: 80px 5%;
+  }
+
+  .contact__wrap {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .contact__card {
+    padding: 40px 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact__card button,
+  .contact__social a,
+  .contact__card input,
+  .contact__card textarea {
+    transition: none;
+  }
+}

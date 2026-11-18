@@ -1,0 +1,322 @@
+
+/* ---------- Box sizing ---------- */
+.ppage,
+.ppage *,
+.ppage *::before,
+.ppage *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Main page ---------- */
+.ppage {
+  --navy: #0b1437;
+  --subtitle: #4a4f6e;
+  --blue: #1e3a8a;
+  --blue-dark: #162c6b;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+
+  padding: 40px 5% 120px;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f5f4fb 55%,
+    #f1eef9 100%
+  );
+
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ---------- Back link ---------- */
+.ppage__back {
+  display: inline-block;
+  float: left;
+  color: var(--blue);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ppage__back:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Heading ---------- */
+.ppage__label {
+  clear: both;
+  margin: 60px 0 0;
+  color: #0f7f93;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+}
+
+.ppage__title {
+  width: 100%;
+  max-width: 800px;
+  margin: 16px auto 0;
+
+  color: var(--navy);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+
+  overflow-wrap: anywhere;
+}
+
+.ppage__subtitle {
+  width: 100%;
+  max-width: 620px;
+  margin: 22px auto 0;
+  color: var(--subtitle);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* ---------- Pricing grid ---------- */
+.ppage__grid {
+  display: grid;
+  margin-bottom: 80px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  min-width: 0;
+  margin: 64px auto 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* ---------- Pricing cards ---------- */
+.ppage__card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  padding: 36px 24px;
+
+  border: 1px solid rgba(11, 20, 55, 0.15);
+  border-radius: 28px;
+
+  background: #fff;
+
+  overflow-wrap: anywhere;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ppage__card:hover {
+  transform: translateY(-5px);
+}
+
+.ppage__card.is-featured {
+  border-color: var(--blue);
+  box-shadow: 0 20px 45px rgba(30, 58, 138, 0.18);
+}
+
+/* ---------- Recommended package ---------- */
+.ppage__card.is-featured {
+  position: relative;
+  border: 1px solid #1e3a8a;
+  background: #fff;
+  box-shadow: none;
+  transform: none;
+}
+
+.ppage__badge {
+  position: absolute;
+  top: -13px;
+  left: 24px;
+  padding: 4px 10px;
+  background: #fff;
+  color: #1e3a8a;
+  border: 1px solid #1e3a8a;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.ppage__card:not(.is-featured) {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.ppage__card:not(.is-featured):hover {
+  box-shadow: 0 12px 30px rgba(30, 58, 138, 0.12);
+  transform: translateY(-5px);
+}
+.ppage__card.is-featured:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(30, 58, 138, 0.25);
+}
+
+/* Keep the featured card aligned on mobile */
+@media (max-width: 650px) {
+  .ppage__card.is-featured {
+    transform: none;
+  }
+
+  .ppage__card.is-featured:hover {
+    transform: translateY(-5px);
+  }
+}
+
+
+/* ---------- Package name ---------- */
+.ppage__name {
+  margin: 0;
+
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ---------- Price ---------- */
+.ppage__price {
+  margin: 14px 0 0;
+
+  color: var(--navy);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Description ---------- */
+.ppage__summary {
+  margin: 12px 0 0;
+
+  color: var(--subtitle);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Features heading ---------- */
+.ppage__includes-label {
+  margin: 32px 0 12px;
+
+  color: var(--navy);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+/* ---------- Features list ---------- */
+.ppage__list {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.ppage__list li {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 8px 0 8px 28px;
+
+  color: var(--subtitle);
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+.ppage__list li::before {
+  content: "✓";
+
+  position: absolute;
+  left: 0;
+
+  color: #0f7f93;
+  font-weight: 700;
+}
+
+/* ---------- Button ---------- */
+.ppage__btn {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 32px;
+  padding: 16px;
+
+  border-radius: 999px;
+
+  background: var(--blue);
+  color: #fff;
+
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+}
+
+.ppage__btn:hover {
+  background: var(--blue-dark);
+}
+
+.ppage a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1000px) {
+  .ppage__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 700px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 650px) {
+  .ppage {
+    padding: 30px 16px 80px;
+  }
+
+  .ppage__label {
+    margin-top: 65px;
+  }
+
+  .ppage__grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 440px;
+    gap: 24px;
+    margin-top: 42px;
+  }
+
+  .ppage__card {
+    padding: 32px 22px;
+  }
+
+  .ppage__price {
+    font-size: 1.8rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ppage__card,
+  .ppage__btn {
+    transition: none;
+  }
+}

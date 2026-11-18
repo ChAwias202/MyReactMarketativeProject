@@ -1,0 +1,269 @@
+/* ---------- Settings ---------- */
+.acc {
+  --card-h: 520px;
+  --navy: #0b1437;
+  --subtitle: #4a4f6e;
+  --speed: 0.6s;
+}
+
+/* ---------- Section (blue page) ---------- */
+.acc {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 5%;
+  background: linear-gradient(160deg, #1e3a8a 0%, #162c6b 55%, #0b1437 100%);
+  font-family: "DM Sans", sans-serif;
+  scroll-margin-top: 90px;
+}
+
+/* ---------- Row of six cards ---------- */
+.acc__row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 1200px;
+  height: var(--card-h);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.acc__item {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  transition: flex-grow var(--speed) cubic-bezier(0.4, 0, 0.2, 1),
+    background var(--speed) ease;
+}
+
+.acc__item:not(.is-active):hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* The open card is wide and white */
+.acc__item.is-active {
+  flex-grow: 6;
+
+  background: hsla(185, 76%, 51%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(185, 76%, 51%, 1) 70%,
+    hsla(0, 0%, 100%, 1) 100%
+  );
+
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Clickable heading area ---------- */
+.acc__trigger {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.acc__item.is-active .acc__trigger {
+  bottom: auto;
+  height: 110px;
+  cursor: default;
+}
+
+.acc__num {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.3s ease;
+}
+
+.acc__item.is-active .acc__num {
+  opacity: 0;
+}
+
+/* Sideways heading (closed cards) */
+.acc__vtitle {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transition: opacity 0.3s ease;
+}
+
+.acc__item.is-active .acc__vtitle {
+  opacity: 0;
+}
+
+/* Normal heading (open card) */
+.acc__title {
+  position: absolute;
+  top: 34px;
+  left: 36px;
+  right: 36px;
+  color: var(--navy);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.acc__item.is-active .acc__title {
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+
+/* ---------- Content (open card) ---------- */
+.acc__panel {
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  bottom: 34px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.acc__item.is-active .acc__panel {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s ease 0.35s;
+}
+
+.acc__intro {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+
+.acc__label {
+  margin: 22px 0 6px;
+  color: #3f6af0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.acc__details {
+  margin: 0;
+  color: var(--subtitle);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ---------- Keyboard focus ---------- */
+.acc__trigger:focus-visible {
+  outline: 2px solid #22dbe3;
+  outline-offset: -4px;
+  border-radius: 18px;
+}
+.acc__header {
+  text-align: center;
+  margin-bottom: 45px;
+  color: #fff;
+}
+
+.acc__header h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.acc__header p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ---------- Tablet and mobile: cards stack, open one grows downward ---------- */
+@media (max-width: 800px) {
+  .acc {
+    padding: 80px 5%;
+  }
+
+  .acc__row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .acc__item {
+    flex: none;
+    height: 72px;
+    transition: height var(--speed) cubic-bezier(0.4, 0, 0.2, 1),
+      background var(--speed) ease;
+  }
+
+  .acc__item.is-active {
+    height: 500px;
+  }
+
+  .acc__num {
+    left: auto;
+    right: 24px;
+    bottom: auto;
+    top: 26px;
+    transform: none;
+  }
+
+  .acc__vtitle {
+    top: 24px;
+    left: 24px;
+    transform: none;
+    writing-mode: horizontal-tb;
+    font-size: 1rem;
+  }
+
+  .acc__title {
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    font-size: 1.3rem;
+  }
+
+  .acc__item.is-active .acc__trigger {
+    height: 90px;
+  }
+
+  .acc__panel {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acc__item,
+  .acc__panel,
+  .acc__title,
+  .acc__vtitle {
+    transition: none !important;
+  }
+}

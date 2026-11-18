@@ -1,0 +1,226 @@
+.visual-break {
+  position: relative;
+  width: 100%;
+  padding: 100px 0 120px 0; /* Reduced side padding so slider can bleed off screen */
+  background: #050810; /* Very dark background from reference */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Background Effects --- */
+.visual-break__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.visual-break__glow--1 {
+  width: 500px;
+  height: 500px;
+  background: #1e3a8a; 
+  top: -150px;
+  left: -150px;
+}
+
+.visual-break__glow--2 {
+  width: 600px;
+  height: 600px;
+  background: #22dbe3; 
+  bottom: -200px;
+  right: -150px;
+  opacity: 0.2;
+}
+
+.visual-break__grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Content & Header --- */
+.visual-break__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.visual-break__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+  padding: 0 5%;
+}
+
+/* Custom Eyebrow with lines and dots */
+.visual-break__eyebrow-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.visual-break__eyebrow-wrapper .line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.visual-break__eyebrow-wrapper .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.visual-break__eyebrow-wrapper .eyebrow-text {
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.visual-break__title {
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px 0;
+}
+
+.visual-break__subtitle {
+  color: #a1a1aa;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 550px;
+}
+
+/* --- Slider Layout --- */
+.visual-break__slider-wrapper {
+  width: 100%;
+  padding-bottom: 50px; /* Space for the pagination dots */
+}
+
+.testimonial-swiper {
+  width: 100%;
+  padding: 20px 0 40px 0 !important; 
+}
+
+/* Makes side slides slightly smaller and faded */
+.testimonial-swiper .swiper-slide {
+  width: 380px; /* Width of the cards */
+  height: auto;
+  transition: opacity 0.3s ease;
+  opacity: 0.4;
+}
+
+/* Full opacity for the active slide */
+.testimonial-swiper .swiper-slide-active {
+  opacity: 1;
+}
+
+/* --- Testimonial Card Styling --- */
+.testimonial-card {
+  background: linear-gradient(145deg, rgba(30, 41, 70, 0.7), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.testimonial-card__quote-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.testimonial-card__quote {
+  color: #e4e4e7;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+  flex-grow: 1; /* Pushes author info to bottom */
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.testimonial-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-card__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card__info strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.testimonial-card__info span {
+  color: #a1a1aa;
+  font-size: 0.8rem;
+}
+
+/* --- Custom Pagination Dots --- */
+.testimonial-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  transition: all 0.3s ease;
+}
+
+.testimonial-swiper .swiper-pagination-bullet-active {
+  background: #ffffff;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 600px) {
+  .testimonial-swiper .swiper-slide {
+    width: 300px; /* Smaller cards on mobile */
+  }
+  
+  .visual-break {
+    padding: 60px 0 80px 0;
+  }
+}

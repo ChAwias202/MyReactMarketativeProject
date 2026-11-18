@@ -1,0 +1,122 @@
+/* ---------- Section Layout ---------- */
+.results {
+  background-color: #1994AB; /* Deep black from image 2 */
+  padding: 120px 5%;
+  font-family: "DM Sans", sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.results__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50/50 split */
+  gap: 80px;
+  align-items: center;
+}
+
+/* ---------- Left Column (Text) ---------- */
+.results__left {
+  max-width: 480px;
+}
+
+.results__title {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px 0;
+}
+
+.results__desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #C3C3C8; /* Muted grey text */
+  margin: 0 0 32px 0;
+}
+
+/* White pill button (matches image 2) */
+.results__btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #1E3A8A;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 6px; /* Slight rounding, not a full pill */
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.results__btn:hover {
+  background: #274CB2;
+  transform: translateY(-2px);
+}
+
+/* ---------- Right Column (Stats) ---------- */
+.results__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 40px; /* Gap between rows and columns */
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-card__number {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2.8rem, 4vw, 3.6rem);
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  line-height: 1;
+}
+
+/* The dark grey pill behind the label */
+.stat-card__label {
+  display: inline-block;
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.stat-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #C3C3C8;
+  margin: 0;
+  max-width: 200px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .results__inner {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .results__left {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .results__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .stat-card__desc {
+    max-width: 100%;
+  }
+}

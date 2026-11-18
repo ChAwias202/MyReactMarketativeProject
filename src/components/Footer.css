@@ -1,0 +1,148 @@
+/* --- Main Footer Container --- */
+.footer {
+  position: relative;
+  background-color: #0b0c10; 
+  color: #ffffff;
+  padding: 100px 5% 0 5%;
+  
+  /* Absolutely prevents any horizontal scrolling or overflow */
+  width: 100%;
+  overflow: hidden; 
+  
+  font-family: "DM Sans", sans-serif;
+}
+
+.footer__inner {
+  position: relative;
+  z-index: 2; 
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- Top Section --- */
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 80px;
+  margin-bottom: 60px;
+}
+
+.footer__logo {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  letter-spacing: 0.02em;
+  color: #ffffff; 
+}
+
+.footer__desc {
+  color: #a1a1aa;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  max-width: 320px;
+}
+
+/* --- Links Grid --- */
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer__col-title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+  color: #ffffff;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer__list a {
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer__list a:hover {
+  color: #ffffff;
+}
+
+/* --- Bottom Section --- */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  color: #a1a1aa;
+}
+
+/* --- The Giant Background Text --- */
+.footer__giant-text {
+  position: absolute;
+  bottom: -2%; /* Adjusted to hug the bottom edge perfectly */
+  
+  /* Bind it to the center */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  font-family: "Poppins", sans-serif;
+  
+  /* 👈 MADE MUCH SMALLER: Starts at 3rem, maxes out at 14vw (14% of screen width) */
+  font-size: clamp(3rem, 14vw, 18rem); 
+  
+  font-weight: 800;
+  line-height: 0.75;
+  letter-spacing: -0.04em;
+  white-space: nowrap; 
+  pointer-events: none; 
+  z-index: 1;
+  user-select: none;
+  
+  background: linear-gradient(to bottom, #103b33 0%, #061411 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .footer__links {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__links {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer__bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .footer__giant-text {
+    bottom: 0; /* Hugs the absolute bottom on mobile */
+    font-size: 15vw; /* Keeps it strictly inside the screen width */
+  }
+}

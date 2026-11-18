@@ -1,0 +1,232 @@
+
+.why-section {
+  position: relative;
+  width: 100%;
+  min-height: 650px;
+  padding: 85px 8% 35px;
+  background-color: #08090d;
+  background-image:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(35, 65, 115, 0.12),
+      transparent 65%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.012) 0px,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Australia label */
+
+.why-country {
+  position: absolute;
+  top: 35px;
+  right: 7%;
+  color: #5795ff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+/* Main heading */
+
+.why-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.why-heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 700px;
+  margin: 0 auto 55px;
+}
+
+.why-heading h2 {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(55px, 8vw, 85px);
+  font-weight: 850;
+  line-height: 0.98;
+  letter-spacing: -3px;
+  margin: 0;
+}
+
+.why-heading h2 > span:nth-child(2) {
+  color: #5795ff;
+}
+
+.why-us {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.why-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #5795ff;
+  color: #08090d;
+  font-size: 43px;
+  letter-spacing: 0;
+  transition: transform 0.3s ease;
+}
+
+.why-arrow:hover {
+  transform: translateX(6px);
+}
+
+.why-question {
+  font-size: clamp(180px, 25vw, 270px);
+  font-weight: 900;
+  line-height: 0.8;
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+/* Reason pills */
+
+.why-reasons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 30px;
+}
+
+.why-pill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 72px;
+  padding: 18px 25px;
+  border-radius: 18px 35px 18px 35px;
+  background: #ffffff;
+  color: #111111;
+  font-size: clamp(15px, 2vw, 21px);
+  font-weight: 700;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: whyFadeUp 0.7s ease both;
+  animation-delay: var(--delay);
+}
+
+.why-pill:nth-child(1),
+.why-pill:nth-child(4) {
+  background: #5795ff;
+}
+
+.why-pill-1 {
+  transform: rotate(3deg);
+}
+
+.why-pill-2 {
+  transform: rotate(-2deg);
+}
+
+.why-pill-3 {
+  transform: rotate(-3deg);
+}
+
+.why-pill-4 {
+  transform: rotate(3deg);
+}
+
+.why-pill:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 12px 30px rgba(87, 149, 255, 0.2);
+}
+
+.why-dot {
+  width: 13px;
+  height: 13px;
+  min-width: 13px;
+  border-radius: 50%;
+  background: #111111;
+}
+
+/* Footer */
+
+.why-footer {
+  margin-top: 65px;
+  text-align: center;
+  color: #8b93a3;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+/* Entrance animation */
+
+@keyframes whyFadeUp {
+  from {
+    opacity: 0;
+    translate: 0 25px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 650px) {
+  .why-section {
+    padding: 85px 6% 30px;
+    min-height: auto;
+  }
+
+  .why-heading {
+    margin-bottom: 45px;
+  }
+
+  .why-heading h2 {
+    font-size: clamp(45px, 12vw, 65px);
+    letter-spacing: -2px;
+  }
+
+  .why-question {
+    font-size: 145px;
+    margin-right: 0;
+  }
+
+  .why-arrow {
+    width: 43px;
+    height: 43px;
+    font-size: 30px;
+  }
+
+  .why-reasons {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .why-pill {
+    min-height: 62px;
+    font-size: 16px;
+  }
+
+  .why-footer {
+    margin-top: 45px;
+    line-height: 1.8;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-pill {
+    animation: none;
+  }
+}

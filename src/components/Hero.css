@@ -1,81 +1,82 @@
-/* ---------- Settings (change these in one place) ---------- */
-.hero {
-  --navy: #0b1437;
-  --subtitle: #4a4f6e;
-  --nav-height: 90px; /* roughly the height of your navbar */
-  --overlay-strength: 0.55; /* 0 = no cover, 1 = fully white */
+.hero-scroll {
+  --nav-height: 90px;
+  --zoom-end: #1c2f75;   /* must match last frame + section 2 background */
+  position: relative;
+  height: 300vh;
+  margin-top: calc(var(--nav-height) * -1);
 }
 
-/* ---------- Section layout ---------- */
 .hero {
-  position: relative;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
   overflow: hidden;
   display: flex;
   align-items: center;
-  min-height: 100vh;
-  /* Pull the section up behind the sticky navbar */
-  margin-top: calc(var(--nav-height) * -1);
   padding: var(--nav-height) 5% 60px;
-  background: #f5f4fb; /* shows while the video loads */
+  background: #f5f4fb;
   font-family: "DM Sans", sans-serif;
 }
 
-/* ---------- Background video ---------- */
 .hero__video {
   position: absolute;
   inset: 0;
-  z-index: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills the section without stretching */
+  object-fit: cover;
   pointer-events: none;
 }
+.hero__video--bg   { z-index: 0; }
+.hero__video--zoom { z-index: 1; will-change: opacity; }
 
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, var(--overlay-strength)) 0%,
-    rgba(255, 255, 255, calc(var(--overlay-strength) * 0.5)) 100%
-  );
-  pointer-events: none;
-}
-
-/* ---------- Heading + subheading ---------- */
+/* Text: restored to the original 1.15fr column width */
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  width: 100%;
+  max-width: 55%;
 }
 
 .hero__title {
   margin: 0;
-  color: var(--navy);
+  color: #0b1437;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: clamp(2.4rem, 5.2vw, 5rem);
+  font-size: clamp(2.6rem, 5.8vw, 5.5rem);   /* bigger ceiling, was 5rem */
   line-height: 1.08;
   letter-spacing: -0.02em;
 }
-
-.hero__title span {
-  display: block;
-}
+.hero__title span { display: block; }
 
 .hero__subtitle {
   max-width: 560px;
   margin: 28px 0 0;
-  color: var(--subtitle);
-  font-size: clamp(1.05rem, 1.6vw, 1.5rem);
+  color: #4a4f6e;
+  font-size: clamp(1.1rem, 1.75vw, 1.55rem);  /* bigger, was 1.5rem */
   line-height: 1.6;
 }
 
-/* ---------- Tablet and mobile ---------- */
+.hero__fill {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--zoom-end);
+  pointer-events: none;
+}
+
 @media (max-width: 900px) {
   .hero {
-    min-height: 80vh;
-    padding-top: calc(var(--nav-height) + 40px);
+    align-items: flex-start;
+    padding-top: calc(var(--nav-height) + 24px);
+    padding-bottom: 40px;
   }
+  .hero__content { max-width: 100%; }
+}
+
+.hero--static {
+  position: relative;
+  top: auto;
+  height: auto;
+  min-height: 100svh;
 }

@@ -1,34 +1,73 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-// import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import './App.css';
+import WorkSlider from "./components/WorkSlider";
+import Pricing from "./components/Pricing";
+import PricingPage from "./components/PricingPage";
+import WhyChooseUs from "./components/WhyChooseUs";
+import Results from "./components/Results";
+import VisualBreak from "./components/VisualBreak";
+import AboutUs from "./components/AboutUs"; 
+import Footer from "./components/Footer";
+import Contact from "./components/Contact"; 
+import Terms from "./components/Terms";
+
+// Jumps to the top whenever the page changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+// The Home page
+function Home() {
+  return (
+    <>
+      <Hero />
+      {/* If you want the WorkSlider to also show on the home page below the hero, keep it here.
+          If you ONLY want it on the /services page, delete <WorkSlider /> from here. */}
+      <WorkSlider /> 
+      <Pricing />
+      <WhyChooseUs />
+      <Results />
+      <VisualBreak />
+    </>
+  );
+}
+
+// 👈 1. Create a specific Services page that renders the WorkSlider
+function Services() {
+  return (
+    <div style={{ paddingTop: "100px" }}> 
+      {/* Adding paddingTop ensures the sticky navbar doesn't cover the slider */}
+      <WorkSlider />
+    </div>
+  );
+}
 
 function App() {
   return (
-    // <Navbar bg="light" expand="lg">
-    //   <Container>
-    //     <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <BrowserRouter>
+      <ScrollToTop />
+      
+      <Navbar />
 
-    //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/about" element={<AboutUs />} />
+        
+        {/* 👈 2. Point the /work route to the new Services component */}
+        <Route path="/work" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/terms" element={<Terms />} />
+      </Routes>
 
-    //     <Navbar.Collapse id="basic-navbar-nav">
-    //       <Nav className="me-auto">
-    //         <Nav.Link href="#home">Home</Nav.Link>
-    //         <Nav.Link href="#link">Link</Nav.Link>
-
-    //         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-    //           <NavDropdown.Item href="#action">Action</NavDropdown.Item>
-    //           <NavDropdown.Item href="#another">Another action</NavDropdown.Item>
-    //         </NavDropdown>
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Container>
-    // </Navbar>
-    <>
-    <Navbar />
-    <Hero />
-    </>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

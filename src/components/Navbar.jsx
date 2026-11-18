@@ -1,31 +1,39 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom"; // 👈 Imported Link & useLocation
 import "./Navbar.css";
-import logo from "../assets/logo.png"; // your transparent infinity logo
+import logo from "../assets/logo.png"; 
 
-const NAV_LINKS = ["Home", "Products", "Technology", "About", "Support"];
+// 👈 Changed to objects so we can map names to specific paths
+const NAV_LINKS = [
+  { name: "Home", path: "/" },
+  { name: "Pricing", path: "/pricing" },
+  { name: "About Us", path: "/about" },
+  { name: "Services", path: "/work" }
+];
 
 function Navbar() {
-  // Which link is currently highlighted (underlined)
-  const [activeLink, setActiveLink] = useState("Home");
   // Whether the mobile menu is open
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleLinkClick = (name) => {
-    setActiveLink(name);
+  
+  // 👈 Use React Router to automatically detect the current page for the underline
+  const location = useLocation();
+  const currentPath = location.pathname;
+  
+  const handleLinkClick = () => {
     setMenuOpen(false); // close the mobile menu after a click
   };
 
   return (
     <header className="navbar">
       {/* Logo + brand name */}
-      <a
-        href="#home"
+      <Link
+        to="/"
         className="navbar__brand"
-        onClick={() => handleLinkClick("Home")}
+        onClick={handleLinkClick}
       >
         <img src={logo} alt="" className="navbar__logo" />
         <span className="navbar__name">Marketative</span>
-      </a>
+      </Link>
 
       {/* Menu links (and Contact button on mobile) */}
       <nav
@@ -34,35 +42,35 @@ function Navbar() {
         className={`navbar__links ${menuOpen ? "is-open" : ""}`}
       >
         <ul>
-          {NAV_LINKS.map((name) => (
-            <li key={name}>
-              <a
-                href={`#${name.toLowerCase()}`}
+          {NAV_LINKS.map((link) => (
+            <li key={link.name}>
+              <Link
+                to={link.path}
                 className={`navbar__link ${
-                  activeLink === name ? "is-active" : ""
+                  currentPath === link.path ? "is-active" : ""
                 }`}
-                aria-current={activeLink === name ? "page" : undefined}
-                onClick={() => handleLinkClick(name)}
+                aria-current={currentPath === link.path ? "page" : undefined}
+                onClick={handleLinkClick}
               >
-                {name}
-              </a>
+                {link.name}
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a
-          href="#contact"
+        <Link
+          to="/contact"
           className="navbar__cta navbar__cta--mobile"
-          onClick={() => setMenuOpen(false)}
+          onClick={handleLinkClick}
         >
           Contact
-        </a>
+        </Link>
       </nav>
 
       {/* Contact button (desktop) */}
-      <a href="#contact" className="navbar__cta navbar__cta--desktop">
+      <Link to="/contact" className="navbar__cta navbar__cta--desktop">
         Contact
-      </a>
+      </Link>
 
       {/* Hamburger button (mobile only) */}
       <button
