@@ -27,6 +27,12 @@
 .addons__cta { padding: 12px 22px; border-radius: 999px; background: #fff; color: #0b1437; text-decoration: none; font-weight: 500; transition: transform 0.15s ease; }
 .addons__cta:hover { transform: translateY(-1px); }
 .addons__cta--ghost { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.35); }
+.addons__cta--disabled {
+  cursor: not-allowed;
+  pointer-events: none; /* Prevents clicking */
+  background: #4a4f6e; /* Dark grey */
+  color: #a1a1aa;
+}
 
 @media (max-width: 640px) {
   .addon__row { grid-template-columns: 24px 1fr; row-gap: 6px; }

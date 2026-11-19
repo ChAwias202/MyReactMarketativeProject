@@ -41,9 +41,12 @@ function PricingPage() {
                 <li key={line}>{line}</li>
               ))}
             </ul>
-            <a href="/#contact" className="ppage__btn">
-              Choose this package
-            </a>
+            <Link 
+              to={`/contact2?package=${encodeURIComponent(plan.name)}`} 
+              className="ppage__btn"
+            >
+             Choose this package
+            </Link>
           </article>
         ))}
       </div>

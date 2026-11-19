@@ -12,6 +12,7 @@ import AboutUs from "./components/AboutUs";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact"; 
 import Terms from "./components/Terms";
+import Contact2 from "./components/Contact2"; 
 
 // Jumps to the top whenever the page changes
 function ScrollToTop() {
@@ -64,6 +65,8 @@ function App() {
         <Route path="/work" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/contact2" element={<Contact2 />} />
+        <Route path="/pricing-enquiry" element={<Contact2 />} />
       </Routes>
 
       <Footer />

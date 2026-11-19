@@ -6,17 +6,18 @@ const INFO = {
   description: "We turn ambitious businesses into unforgettable brands through powerful digital marketing.",
   loc1: {
     address: "5 Kingston Heath Ct, Craigieburn VIC 3064, Australia",
-    phone: "+61 040 7531966", // 👈 The only phone number now
+    phone: "+61 040 7531966",
   },
   loc2: {
-    address: "Islamabad,Pakistan.", // 👈 Add your 2nd address here
+    address: "Islamabad, Pakistan", // 👈 Add your 2nd address here
+    phone: "+92 314 0950434", // 👈 Add your 2nd phone here
   },
   email: "marketative@gmail.com",
 };
 
 // 2. Where the form sends messages. Create a free form at formspree.io,
 //    then paste your form link here.
-const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyypLzWrK1RiVvOYinRtZPNzjv51D0JZucw3t6kVlSPm3n-yATnMGI0tMACS1hLg1hpEA/exec";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -27,21 +28,21 @@ function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("Failed");
-      setForm({ name: "", email: "", message: "" });
-      setStatus("sent");
-    } catch {
-      setStatus("error");
-    }
-  };
+  e.preventDefault();
+  setStatus("sending");
+  try {
+    await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(form),
+    });
+    setForm({ name: "", email: "", message: "" });
+    setStatus("sent");
+  } catch {
+    setStatus("error");
+  }
+};
 
   return (
     <section className="contact" id="contact">
@@ -51,7 +52,7 @@ function Contact() {
           <h2 className="contact__title">CONTACT</h2>
           <p className="contact__desc">{INFO.description}</p>
 
-          {/* Location Heading */}
+          {/* 👈 Location Heading */}
           <h3 className="contact__label">Location</h3>
           
           <div className="contact__location-row">
@@ -64,10 +65,14 @@ function Contact() {
             <p className="contact__text">{INFO.loc2.address}</p>
           </div>
 
-          {/* Number Heading - Only one number now */}
+          {/* 👈 Number Heading */}
           <h3 className="contact__label">Number</h3>
+          
           <p className="contact__text">
             <a href={`tel:${INFO.loc1.phone.replace(/\s/g, "")}`}>{INFO.loc1.phone}</a>
+          </p>
+          <p className="contact__text">
+            <a href={`tel:${INFO.loc2.phone.replace(/\s/g, "")}`}>{INFO.loc2.phone}</a>
           </p>
 
           <h3 className="contact__label">Email</h3>

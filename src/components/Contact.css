@@ -221,3 +221,55 @@
     transition: none;
   }
 }
+
+
+
+.pricing-enquiry__card {
+  max-height: 750px;
+  overflow-y: auto;
+}
+
+.pricing-enquiry__card select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  background: #242424;
+  color: white;
+  font: inherit;
+}
+
+.pricing-enquiry__services > label {
+  display: block;
+  color: white;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.pricing-enquiry__service-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.pricing-enquiry__service-list label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pricing-enquiry__service-list input {
+  width: auto;
+  margin-top: 3px;
+  accent-color: #5795ff;
+}
+
+@media (max-width: 600px) {
+  .pricing-enquiry__service-list {
+    grid-template-columns: 1fr;
+  }
+}

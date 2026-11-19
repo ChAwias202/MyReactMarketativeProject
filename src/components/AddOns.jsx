@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // 👈 Ensure Link is imported
 import "./AddOns.css";
 
 const ADD_ONS = [
@@ -84,16 +85,21 @@ export default function AddOns() {
           <span className="addons__total">
             {selected.length ? AUD(total) : "—"}
           </span>
-          <a
-            href={
-              selected.length
-                ? `mailto:hello@marketative.com.au?subject=Quote request`
-                : "#contact"
-            }
-            className={`addons__cta ${selected.length ? "" : "addons__cta--ghost"}`}
+          
+          {/* 👈 This Link goes to the page where you render <Contact2 /> */}
+          <Link
+            to={selected.length ? "/pricing-enquiry" : "#"} // Update this route if yours is different!
+            className={`addons__cta ${
+              selected.length ? "" : "addons__cta--disabled"
+            }`}
+            onClick={(e) => {
+              if (selected.length === 0) e.preventDefault(); 
+            }}
+            aria-disabled={selected.length === 0}
           >
-            {selected.length ? "Get a quote →" : "Contact us →"}
-          </a>
+            Contact Us →
+          </Link>
+          
         </motion.div>
       </div>
     </section>

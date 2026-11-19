@@ -1,0 +1,38 @@
+.pricing-enquiry__card {
+  max-height: 750px;
+  overflow-y: auto;
+}
+
+/* 👈 Updated Dropdown Styling */
+.pricing-enquiry__card select {
+  width: 100%;
+  padding: 14px 16px;        /* Better spacing inside */
+  margin-top: 12px;          /* Space above */
+  margin-bottom: 24px;       /* Space below */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;        /* Slightly rounder */
+  background: #242424;
+  color: white;
+  font: inherit;
+  outline: none;
+  cursor: pointer;
+  appearance: none;          /* Removes default arrow */
+  
+  /* Custom white arrow */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+/* Hover/Focus effect for dropdown */
+.pricing-enquiry__card select:focus {
+  border-color: #5795ff; /* Your blue accent */
+}
+
+/* Dark options menu */
+.pricing-enquiry__card select option,
+.pricing-enquiry__card select optgroup {
+  background-color: #242424;
+  color: white;
+}

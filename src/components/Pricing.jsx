@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import "./Pricing.css";
 import { PLANS } from "./plans";
 
+
+
 function Pricing() {
   return (
     <section className="pricing" id="pricing">
